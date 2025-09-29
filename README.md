@@ -5,27 +5,18 @@ This is a HIP version of the [FiniteVolume code](https://github.com/babrodtk/Fin
 ## Setup on LUMI-G
 Here is a step-by-step guide on installing packages on LUMI-G
 
-### Step 1: Install rocm-5.2.5 with Easybuild
-```
-export EBU_USER_PREFIX=/project/project_xxxxxx/EasyBuild
-ml LUMI/24.03 partition/G
-ml EasyBuild-user
-export PYTHONIOENCODING=utf-8
-eb rocm-5.2.5.eb -r
-```
-
-### Step 2: run conda-container
+### Step 1: run conda-container
 Installation via conda can be done as:
 ```
-ml LUMI/24.03 partition/G
-ml lumi-container-wrapper/0.3.3-cray-python-3.11.7
+ml LUMI partition/G
+ml lumi-container-wrapper
 ```
 ```
-conda-containerize new --prefix MyCondaEnv conda_environment_lumi.yml
+conda-containerize new --mamba --prefix MyCondaEnv conda_environment_lumi.yml
 ```
 where the file `conda_environment_lumi.yml` contains packages to be installed.
 
-### Step 3: Set the env. variable to search for binaries
+### Step 2: Set the env. variable to search for binaries
 ```
 export the bin path: export PATH="$PWD/MyCondaEnv/bin:$PATH"
 ```
